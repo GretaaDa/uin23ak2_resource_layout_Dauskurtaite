@@ -94,3 +94,62 @@ const resources = [
         ]
     },
 ]
+
+//Variables created in global scope to later use in functions
+let navBar = document.getElementById("navBar")
+let main = document.getElementById("mainInfo")
+
+//Mapped through the resources array, to create and appended the category value to different buttons. Help: https://www.w3schools.com/js/js_htmldom_nodes.asp
+resources.map(item => {
+    let button = document.createElement("button")
+    let cat = document.createTextNode(item.category)
+    button.appendChild(cat)
+    navBar.appendChild(button)
+    //Created an onclick method, to call the two functions when one of the category buttons are clicked
+    button.onclick = function () {
+        //Used this to pass the button, help: https://www.w3schools.com/js/js_this.asp
+        changeCategory(this)
+        changeContent(item)
+    }
+})
+
+//Function that resets the active class and toggles the button that is clicked 
+function changeCategory(e) {
+    document.querySelectorAll("#navBar button").forEach(element => {
+        element.classList.remove("active")
+    })
+    e.classList.toggle("active")
+
+}
+
+//Function that adds the header, text and sources to the main tag
+function changeContent(item) {
+    //Set the main value to an empty string so the content resets each time
+    main.innerHTML = ""
+    let header = document.createElement("h2")
+    let headerText = document.createTextNode(item.category)
+    header.appendChild(headerText)
+    main.appendChild(header)
+    let paragraph = document.createElement("p")
+    let context = document.createTextNode(item.text)
+    paragraph.appendChild(context)
+    main.appendChild(paragraph)
+
+    let ul = document.createElement("ul")
+    main.appendChild(ul)
+    //Mapped through just the item array to add the list items
+    item.sources.map(i => {
+        let list = document.createElement("li")
+        ul.appendChild(list)
+        let link = document.createElement("a")
+        list.appendChild(link)
+        link.setAttribute("href", i.url)
+        let urlTitle = document.createTextNode(i.title)
+        link.appendChild(urlTitle)
+    })
+}
+
+//Added an onload method so that when the page loads the first item  that has the class. Help: https://www.w3schools.com/jsref/event_onload.asp
+window.onload = function () {
+    document.querySelector("#navBar button").click()
+}

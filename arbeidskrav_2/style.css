@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 * {
     margin: 0;
@@ -12,8 +12,8 @@
 }
 
 body {
-    margin: 2rem 15rem;
-    font-family: 'Rubik', sans-serif;
+    margin: 2rem 25rem;
+    font-family: 'Roboto', sans-serif;
     color: var(--grey);
 }
 
@@ -26,40 +26,62 @@ header h1 {
     margin: 3rem 2rem;
 }
 
-nav {
+#navBar {
     display: flex;
     flex-direction: row;
     margin-top: 2rem;
     justify-content: space-between;
-    padding: 1rem 0;
 }
 
-nav a {
+#navBar button {
     border: 1px solid var(--lightGrey);
     border-bottom: none;
-    text-decoration: none;
-    padding: 1rem 1rem;
+    padding: 0;
     color: var(--grey);
-    background-color: lightgray;
+    font-size: 25px;
+    width: 100%;
+    max-width: 11rem;
+    padding: 5px 0px;
 }
 
-nav a.active {
+#navBar button:hover {
+    color: var(--blue);
+}
+
+#navBar button.active {
     background-color: var(--blue);
     border: 1px solid var(--blue);
     color: #FFFFFF;
 }
 
-main {
+
+#mainInfo {
     border: 1px solid var(--lightGrey);
     border-top: 7px solid var(--blue);
     padding: 2rem;
+    padding-bottom: 10rem;
 }
 
-main ul {
+#mainInfo h2 {
+    font-size: 2rem;
+}
+
+#mainInfo p {
+    margin: 1rem 0;
+    margin-right: 20rem;
+}
+
+#mainInfo ul {
     padding-inline-start: 1rem;
 }
 
-main a {
+#mainInfo li {
+    font-size: 1.1rem;
+    margin: 2px;
+
+}
+
+#mainInfo a {
     color: var(--blue);
 
 }
